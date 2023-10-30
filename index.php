@@ -1,0 +1,573 @@
+<?php
+ $dbhost="localhost";   //hostname
+ $dbsuer="root";    //mysql username
+ $dbpass=""; //mysql password
+ $db="my_portfolio"; //name of the database
+
+$conn = mysqli_connect("localhost", "root", "", "my_portfolio");
+
+if ($conn === false) {
+        die("ERROR: Could not connect. "
+            . mysqli_connect_error());
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // The request is using the POST method
+
+    $name = $_REQUEST['name'];
+    $email = $_REQUEST['email'];
+    $subject = $_REQUEST['subject'];
+    $message = $_REQUEST['message'];
+
+    $sql = "INSERT INTO mails (name, email, subject, message) VALUES ('$name', '$email', '$subject', '$message')";
+    if (mysqli_query($conn, $sql)) {
+        echo "message sent successfully";
+        header: "index.php";
+    } else {
+        echo "ERROR: Hush! Sorry $sql. "
+            . mysqli_error($conn);
+    }
+
+    mysqli_close($conn);
+
+} 
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amaku Simon</title>
+    <!--- css files --->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/color-1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/color-1.css" class="alternate-style" title="color-1" disabled>
+    <link rel="stylesheet" href="css/color-2.css" class="alternate-style" title="color-2" disabled>
+    <link rel="stylesheet" href="css/color-3.css" class="alternate-style" title="color-3" disabled>
+    <link rel="stylesheet" href="css/color-4.css" class="alternate-style" title="color-4" disabled>
+    <link rel="stylesheet" href="css/color-5.css" class="alternate-style" title="color-5" disabled>
+    <link rel="stylesheet" href="css/style-switcher.css">
+
+    <style>
+        html
+            {
+                scroll-behavior: smooth;
+            }
+    </style>
+</head>
+<body>
+<!--- main container starts --->
+    <div class="main-container">
+        <!--- sidebar starts --->
+        <div class="sidebar">
+            <div class="logo">
+                <a href=""><span>A</span>maku<span>S</span>imon</a>
+            </div> 
+            <div class="nav-toggler">
+                <span></span>
+            </div>
+            <ul class="nav">
+                <li><a href="#home" class="active"><i class="fa fa-home"></i> Home</a></li>
+                <li><a href="#about"><i class="fa fa-user"></i> About</a></li>
+                <li><a href="#services"><i class="fa fa-list"></i> Services</a></li>
+                <li><a href="#portfolio"><i class="fa fa-briefcase"></i> Portfolio</a></li>
+                <li><a href="#contact"><i class="fa fa-comments"></i> Contact</a></li>
+            </ul>
+        </div>
+        <!--- sidebar ends ---->
+        <!-- main content starts--->
+        <div class="main-content">
+            <!-- home section starts-->
+            <section class="home section" id="home" >
+                <div class="container">
+                   <div class="row">
+                    <div class="home-info padd-15">
+                       <h3 class="hello">Hello, I'm <span class="name">Simon Amaku</span> </h3> 
+                       <h3 class="my-profession">I am a <span class="typing">Web Designer</span> </h3>
+                       <p>I'm a Web Designer with extensive experience. My expertise is to create and design websites, 
+                        graphics and many more...</p>
+                        <a href="#contact" class="btn hire-me">Hire Me</a>
+                    </div>
+                    <div class="home-img padd-15">
+                        <img src="images/amaku2.jpg" alt="">
+                    </div>
+                   </div> 
+                </div>
+            </section>
+            <!-- home section ends ---> 
+            <!-- about section starts--->
+            <section class="about section" id="about">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title padd-15">
+                            <h2>About Me</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="about-content padd-15">
+                            <div class="row">
+                                <div class="about-text padd-15">
+                                    <h3>I'm Simon Amaku and a  <span>Web Developer</span> </h3>
+                                    <p>I am a professional Web Developer who works on the design and construction of websites. I ensure that sites meet the clients' expectations by ensuring they look good, 
+                                        run smoothly and offer easy access points with no loading issues between pages or error messages.</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="personal-info padd-15">
+                                    <div class="row">
+                                        <div class="info-item padd-15">
+                                            <p>Birthday : <span>02 July 2000</span> </p>
+                                        </div>
+                                        <div class="info-item padd-15">
+                                            <p>Age : <span>22years</span> </p>
+                                        </div>
+                                        <div class="info-item padd-15">
+                                            <p>Website : <span>www.amakusimon.com</span> </p>
+                                        </div>
+                                        <div class="info-item padd-15">
+                                            <p>Email : <span>amakusimon1@gmail.com</span> </p>
+                                        </div>
+                                        <div class="info-item padd-15">
+                                            <p>Degree : <span>IT</span> </p>
+                                        </div>
+                                        <div class="info-item padd-15">
+                                            <p>Phone : <span>0782393524 / 0704183580</span> </p>
+                                        </div>
+                                        <div class="info-item padd-15">
+                                            <p>Country : <span>Uganda</span> </p>
+                                        </div>
+                                        <div class="info-item padd-15">
+                                            <p>Freelance : <span>Available</span> </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                <div class="buttons pad-15">
+                                    <!-- <a download="https://docs.google.com/presentation/d/1Y-xn6tG1gvs1Mq6Z4ER2E9PYDdW6J1swwaiOCa4vo7A/edit?usp=sharing" class="btn">Download CV</a> -->
+                                    <a href="Desertation 2019-B071-12881 Amaku Simon.pdf" class="btn">Download CV</a>
+                                    <a href="#contact" class="btn hire-me">Hire Me</a>
+                                </div>
+                            </div> 
+                                </div>
+                                <div class="skills padd-15">
+                                    <div class="row">
+                                        <div class="skill-item padd-15">
+                                           <h5>CSS</h5> 
+                                           <div class="progress">
+                                            <div class="progress-in" style="width: 80%;" ></div>
+                                            <div class="skill-percent">80%</div>
+                                           </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="skill-item padd-15">
+                                           <h5>HTML</h5> 
+                                           <div class="progress">
+                                            <div class="progress-in" style="width: 90%;" ></div>
+                                            <div class="skill-percent">90%</div>
+                                           </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="skill-item padd-15">
+                                           <h5>PHP</h5> 
+                                           <div class="progress">
+                                            <div class="progress-in" style="width: 76%;" ></div>
+                                            <div class="skill-percent">76%</div>
+                                           </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="skill-item padd-15">
+                                           <h5>JavaScript</h5> 
+                                           <div class="progress">
+                                            <div class="progress-in" style="width: 60%;" ></div>
+                                            <div class="skill-percent">60%</div>
+                                           </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="skill-item padd-15">
+                                           <h5>BootStrap</h5> 
+                                           <div class="progress">
+                                            <div class="progress-in" style="width: 70%;" ></div>
+                                            <div class="skill-percent">70%</div>
+                                           </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="education padd-15">
+                                  <h3 class="title">Education</h3> 
+                                   <div class="row">
+                                    <div class="timeline-box padd-15">
+                                        <div class="timeline shadow-dark">
+                                            <!--******* timeline item *** --->
+                                            <div class="timeline-item">
+                                                <div class="circle-dot"></div>
+                                                <h3 class="timeline-date">
+                                                    <i class="fa fa-calendar"></i>2019 - 2022
+                                                </h3>
+                                                <h4 class="timeline-title">Bachelors Degree in Information Technology</h4>
+                                                <p class="timeline-text">I got my Bachelors Degree from Uganda Martyrs University main campus in Nkozi, Mpigi District.</p>
+                                            </div>
+
+                                            <!--******* timeline item *** --->
+                                            <div class="timeline-item">
+                                                <div class="circle-dot"></div>
+                                                <h3 class="timeline-date">
+                                                    <i class="fa fa-calendar"></i>2019 
+                                                </h3>
+                                                <h4 class="timeline-title">Certificate in Web Development</h4>
+                                                <p class="timeline-text">I got my certificate in Web Development from Bluestorm Consultancy in Arua.</p>
+                                            </div>
+
+                                            <!--******* timeline item *** --->
+                                            <div class="timeline-item">
+                                                <div class="circle-dot"></div>
+                                                <h3 class="timeline-date">
+                                                    <i class="fa fa-calendar"></i>2019 
+                                                </h3>
+                                                <h4 class="timeline-title">Certificate in Networking</h4>
+                                                <p class="timeline-text">I got my certificate in Networking from Muni University main campus in Arua District.</p>
+                                            </div>
+                                            
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                   </div>
+                                </div>
+                                <div class="experience padd-15">
+                                  <h3 class="title">Experience</h3>
+                                  <div class="row">
+                                    <div class="timeline-box padd-15">
+                                        <div class="timeline shadow-dark">
+                                            <!--******* timeline item *** --->
+                                            <div class="timeline-item">
+                                                <div class="circle-dot"></div>
+                                                <h3 class="timeline-date">
+                                                    <i class="fa fa-calendar"></i>2019 - 2022
+                                                </h3>
+                                                <h4 class="timeline-title">Bachelors Degree in Information Technology</h4>
+                                                <p class="timeline-text">I got my Bachelors Degree from Uganda Martyrs University main campus in Nkozi, Mpigi District.</p>
+                                            </div>
+
+                                            <!--******* timeline item *** --->
+                                            <div class="timeline-item">
+                                                <div class="circle-dot"></div>
+                                                <h3 class="timeline-date">
+                                                    <i class="fa fa-calendar"></i>2019 
+                                                </h3>
+                                                <h4 class="timeline-title">Certificate in Web Development</h4>
+                                                <p class="timeline-text">I got my certificate in Web Development from Bluestorm Consultancy in Arua.</p>
+                                            </div>
+
+                                            <!--******* timeline item *** --->
+                                            <div class="timeline-item">
+                                                <div class="circle-dot"></div>
+                                                <h3 class="timeline-date">
+                                                    <i class="fa fa-calendar"></i>2019 
+                                                </h3>
+                                                <h4 class="timeline-title">Certificate in Networking</h4>
+                                                <p class="timeline-text">I got my certificate in Networking from Muni University main campus in Arua District.</p>
+                                            </div>
+                                            
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                   </div>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!---**** About Section Ends***--->
+            <!--**** Services Section Starts***---->
+            <section class="service section" id="services">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title padd-15">
+                            <h2>Services</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!---- services items start---->
+                        <div class="service-item padd-15">
+                            <div class="service-item-inner">
+                                <div class="icon">
+                                    <i class="fa fa-mobile-alt"></i>
+                                </div>
+                                <h4>Mobile Development</h4>
+                                <p>I design, develop, and implement mobile applications. I do develop both android and iOS applications.🥰</p>
+                            </div>
+                        </div>
+                        <!---- service items end----->
+
+                         <!---- services items start---->
+                         <div class="service-item padd-15">
+                            <div class="service-item-inner">
+                                <div class="icon">
+                                    <i class="fa fa-laptop-code"></i>
+                                </div>
+                                <h4>Web Design</h4>
+                                <p>I create the layout and design of a website. In simple terms, I make sites look good.😊</p>
+                            </div>
+                        </div>
+                        <!---- service items end----->
+
+                         <!---- services items start---->
+                         <div class="service-item padd-15">
+                            <div class="service-item-inner">
+                                <div class="icon">
+                                    <i class="fa fa-palette"></i>
+                                </div>
+                                <h4>Grapics Design</h4>
+                                <p>I create visual concepts, using computer software or by hand, 
+                                    to communicate ideas that inspire, inform, and captivate consumers😎</p>
+                            </div>
+                        </div>
+                        <!---- service items end----->
+
+                         <!---- services items start---->
+                         <div class="service-item padd-15">
+                            <div class="service-item-inner">
+                                <div class="icon">
+                                    <i class="fa fa-code"></i>
+                                </div>
+                                <h4>Web Development</h4>
+                                <p>I do design, create, and modify Web sites. 
+                                    Analyze user needs to implement Web site content, 
+                                    graphics, performance, and capacity🤩</p>
+                            </div>
+                        </div>
+                        <!---- service items end----->
+
+                         <!---- services items start---->
+                         <div class="service-item padd-15">
+                            <div class="service-item-inner">
+                                <div class="icon">
+                                    <i class="fa fa-clock"></i>
+                                </div>
+                                <h4>IT Solutions</h4>
+                                <p> I do provide a range of products to support businesses from 
+                                    an IT and a non-IT perspective forexample
+                                    the software development lifecycle (SDLC),
+                                    project management,
+                                    customer relationship management (CRM),
+                                    resource management,
+                                    IT service management (ITSM),
+                                    enterprise service management (ESM) e.t.c😉</p>
+                            </div>
+                        </div>
+                        <!---- service items end----->
+
+                         <!---- services items start---->
+                         <div class="service-item padd-15">
+                            <div class="service-item-inner">
+                                <div class="icon">
+                                    <i class="fa fa-bullhorn"></i>
+                                </div>
+                                <h4>Social Media Marketing</h4>
+                                <p>I am a marketing specialists who use social 
+                                    media platforms to promote a company's offerings. 
+                                    I oftenly use platforms like WhatsApp, Facebook, 
+                                    Instagram, Twitter, 
+                                    and TikTok to reach new customers, engage with 
+                                    current ones, and announce new products or services😚</p>
+                            </div>
+                        </div>
+                        <!---- service items end----->
+
+                    </div>
+                </div>
+            </section>
+            <!--**** Services Section Ends****---->
+            <!--**** Portfolio Section Starts****---->
+            <section class="porfolio section" id="portfolio">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title padd-15">
+                            <h2>Portfolio</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                    <div class="section-title padd-15">
+                    <h3 class="contact-title padd-15">My Latest Projects : </h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!--- potfolio items start ---->
+                        <div class="portfolio-item padd-15">
+                            <div class="porfolio-item-inner shadow-dark">
+                                <div class="portfolio-img">
+                                    <img src="images/login.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <!--- portfolio items end----->
+                        <!--- potfolio items start ---->
+                        <div class="portfolio-item padd-15">
+                            <div class="porfolio-item-inner shadow-dark">
+                                <div class="portfolio-img">
+                                    <img src="images/sales.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <!--- portfolio items end----->
+                        <!--- potfolio items start ---->
+                        <div class="portfolio-item padd-15">
+                            <div class="porfolio-item-inner shadow-dark">
+                                <div class="portfolio-img">
+                                    <img src="images/signup.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <!--- portfolio items end----->
+                        <!--- potfolio items start ---->
+                        <div class="portfolio-item padd-15">
+                            <div class="porfolio-item-inner shadow-dark">
+                                <div class="portfolio-img">
+                                    <img src="images/order.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <!--- portfolio items end----->
+                        <!--- potfolio items start ---->
+                        <div class="portfolio-item padd-15">
+                            <div class="porfolio-item-inner shadow-dark">
+                                <div class="portfolio-img">
+                                    <img src="images/receipt.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <!--- portfolio items end----->
+                        <!--- potfolio items start ---->
+                        <div class="portfolio-item padd-15">
+                            <div class="porfolio-item-inner shadow-dark">
+                                <div class="portfolio-img">
+                                    <img src="images/view products.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <!--- portfolio items end----->
+                    </div>
+                </div>
+            </section>
+            <!--**** Portfolio Section Ends****---->
+            <!--**** Contact Section Starts****---->
+            <section class="contact section" id="contact">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title padd-15">
+                            <h2>Contact Me</h2>
+                        </div>
+                    </div>
+                    <h3 class="contact-title padd-15">Do You Have Any Questions For Me ?</h3>
+                    <h4 class="contact-sub-title padd-15">I'M AT YOUR SERVICE....</h4>
+                    <div class="row">
+                        <!---===== contact info items start ===--->
+                        <div class="contact-info-item padd-15">
+                            <div class="icon"><i class="fa fa-phone"></i></div>
+                            <h4>Call Me On</h4>
+                            <p>0782393524 / 0704183580</p>
+                        </div>
+                        <!---===== contact info items end ===--->
+                        <!---===== contact info items start ===--->
+                        <div class="contact-info-item padd-15">
+                            <div class="icon"><i class="fa fa-map-marker-alt"></i></div>
+                            <h4>Office</h4>
+                            <p>Arua</p>
+                        </div>
+                        <!---===== contact info items end ===--->
+                        <!---===== contact info items start ===--->
+                        <div class="contact-info-item padd-15">
+                            <div class="icon"><i class="fa fa-envelope"></i></div>
+                            <h4>Email</h4>
+                            <p>amakusimon1@gmail.com</p>
+                        </div>
+                        <!---===== contact info items end ===--->
+                        <!---===== contact info items start ===--->
+                        <div class="contact-info-item padd-15">
+                            <div class="icon"><i class="fa fa-globe-africa"></i></div>
+                            <h4>Website</h4>
+                            <p>www.amakusimon.com</p>
+                        </div>
+                        <!---===== contact info items end ===--->
+                    </div>
+                    <h3 class="contact-title padd-15">Leave For Me a Message!</h3>
+                    <h4 class="contact-sub-title padd-15">I do respond to messages....</h4>
+                    <!---=== contact form===--->
+                    <div class="row">
+                        <div class="contact-form padd-15">
+                        <form action="" method="post">
+                            <div class="row">
+                                <div class="form-item col-6 padd-15">
+                                    <div class="form-group">
+                                        <input type="text" name="name" class="form-control" placeholder="Name" >
+                                    </div>
+                                </div>
+                                <div class="form-item col-6 padd-15">
+                                    <div class="form-group">
+                                        <input type="email" name="email" class="form-control" placeholder="Email" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-item col-12 padd-15">
+                                    <div class="form-group">
+                                        <input type="text" name="subject" class="form-control" placeholder="Subject" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-item col-12 padd-15">
+                                    <div class="form-group">
+                                        <textarea name="message" id="" cols="30" rows="10" class="form-control" placeholder="Message" ></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-item col-12 padd-15">
+                                    <button type="submit" name="submit" class="btn">Send Message</button>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--**** Contact Section Ends****---->
+        </div>
+        <!-- main content ends --->
+    </div>
+<!-- main ncontainer ends --->
+<!------ Style Switcher Starts---->
+<div class="style-switcher">
+    <div class="style-switcher-toggler s-icon">
+        <i class="fas fa-cog fa-spin"></i>
+    </div>
+    <div class="day-night s-icon">
+       <i class="fas "></i> 
+    </div>
+    <h4>Theme Colors</h4>
+    <div class="colors">
+        <span class="color-1" onclick="setActiveStyle('color-1')"></span>
+        <span class="color-2" onclick="setActiveStyle('color-2')"></span>
+        <span class="color-3" onclick="setActiveStyle('color-3')"></span>
+        <span class="color-4" onclick="setActiveStyle('color-4')"></span>
+        <span class="color-5" onclick="setActiveStyle('color-5')"></span>
+    </div>
+</div>
+<!------ Style Switcher Ends---->
+<!--- JS files --->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js" referrerpolicy="no-referrer"></script>
+<script src="js/script.js"></script>
+<script src="js/style-switcher.js"></script>    
+</body>
+</html>
